@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject door_closed, door_opened, intText;
+    public GameObject door_closed, door_opened, intText, lockedtext;
     public AudioSource open, close;
-    public bool opened;
+    public bool opened, locked;
 
     void OnTriggerStay(Collider other)
     {
@@ -14,15 +14,22 @@ public class Door : MonoBehaviour
         {
             if(opened == false)
             {
-                intText.SetActive(true);
-                if(Input.GetKeyDown(KeyCode.E))
+                if (locked == false)
                 {
-                    door_closed.SetActive(false);
-                    door_opened.SetActive(true);
-                    intText.SetActive(false);
-                    //open.Play();
-                    StartCoroutine(repeat());
-                    opened = true;
+                    intText.SetActive(true);
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        door_closed.SetActive(false);
+                        door_opened.SetActive(true);
+                        intText.SetActive(false);
+                        //open.Play();
+                        StartCoroutine(repeat());
+                        opened = true;
+                    }
+                }
+                if (locked == true)
+                {
+                    lockedtext.SetActive(true);
                 }
             }
         }
@@ -32,6 +39,7 @@ public class Door : MonoBehaviour
         if(other.CompareTag("MainCamera"))
         {
             intText.SetActive(false);
+            lockedtext.SetActive(false);
         }
     }
 
