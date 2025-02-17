@@ -7,6 +7,12 @@ public class Door : MonoBehaviour
     public GameObject door_closed, door_opened, intText, lockedtext;
     public AudioSource open, close;
     public bool opened, locked;
+    public static bool keyfound;
+
+    private void Start()
+    {
+        keyfound = false;
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -50,5 +56,13 @@ public class Door : MonoBehaviour
         door_closed.SetActive(true);
         door_opened.SetActive(false);
         //close.Play();
+    }
+
+    private void Update()
+    {
+        if(keyfound == true)
+        {
+            locked = false;
+        }
     }
 }
