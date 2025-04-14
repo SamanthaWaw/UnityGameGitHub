@@ -7,7 +7,7 @@ public class monsAppear : MonoBehaviour
     public GameObject monster;
     public Collider collision1;
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {

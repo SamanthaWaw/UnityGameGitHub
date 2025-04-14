@@ -10,7 +10,7 @@ public class monsterChase : MonoBehaviour
 
     void FixedUpdate()
     {
-        monsRigid.linearVelocity = transform.forward * monSpeed * Time.deltaTime;
+        monsRigid.velocity = transform.forward * monSpeed * Time.deltaTime;
     }
 
     void Update()
