@@ -8,6 +8,7 @@ public class monsterChase : MonoBehaviour
     public Transform monsTrans, playTrans;
     public int monSpeed;
 
+    [System.Obsolete]
     void FixedUpdate()
     {
         monsRigid.velocity = transform.forward * monSpeed * Time.deltaTime;
